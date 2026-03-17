@@ -91,3 +91,7 @@ validateExpressRequest(validateCreateCustomerOrderRequest, req, {
   createError: (message) => new BadRequestProblem(message),
 })
 ```
+
+## Release automation
+
+This repo uses the release-please flow for release automation.

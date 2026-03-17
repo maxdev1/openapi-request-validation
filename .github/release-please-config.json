@@ -1,0 +1,9 @@
+{
+  "bootstrap-sha": "9b2527e512e0be9d9833838d50111bd3522785b2",
+  "packages": {
+    ".": {
+      "release-type": "node",
+      "package-name": "openapi-request-validation"
+    }
+  }
+}
