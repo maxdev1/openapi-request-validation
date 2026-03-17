@@ -1,12 +1,13 @@
 {
   "name": "openapi-request-validation",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Build-time OpenAPI request validation for serverless and lightweight Node runtimes",
   "type": "module",
   "sideEffects": false,
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
   "types": "./dist/types/index.d.ts",
+  "license": "MIT",
   "bin": {
     "openapi-request-validation": "./dist/cjs/cli.js"
   },
