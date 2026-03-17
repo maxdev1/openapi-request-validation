@@ -1,6 +1,6 @@
 {
   "name": "openapi-request-validation",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Generate standalone request validators from OpenAPI specs and validate incoming requests in serverless and lightweight Node.js runtimes.",
   "type": "module",
   "sideEffects": false,
