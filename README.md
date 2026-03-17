@@ -1,11 +1,8 @@
 # openapi-request-validation
 
-Provides request validation based on OpenAPI specifications for serverless and lightweight Node runtimes.
+Generate standalone request validators from OpenAPI specs and validate incoming requests in serverless and lightweight Node.js runtimes.
 
-Used to generate validator code based on an OpenAPI spec and offers runtime validation helpers to validate requests objects.
-Supports AWS Lambda API Gateway events, lambda-api requests and Express.
-
-Uses AJV to generate standalone request validators and ships runtime helpers for easy validation.
+Built on AJV, this package includes runtime helpers for AWS Lambda API Gateway events, lambda-api, and Express.
 
 ## Install
 

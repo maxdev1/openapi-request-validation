@@ -1,7 +1,7 @@
 {
   "name": "openapi-request-validation",
   "version": "0.3.0",
-  "description": "Build-time OpenAPI request validation for serverless and lightweight Node runtimes",
+  "description": "Generate standalone request validators from OpenAPI specs and validate incoming requests in serverless and lightweight Node.js runtimes.",
   "type": "module",
   "sideEffects": false,
   "main": "./dist/cjs/index.js",
