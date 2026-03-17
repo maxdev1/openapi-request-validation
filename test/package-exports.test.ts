@@ -27,14 +27,14 @@ describe("package exports", () => {
     const esmOutput = runNode([
       "--input-type=module",
       "-e",
-      "Promise.all([import('openapi-request-validation/generator'), import('openapi-request-validation/runtime')]).then(([g,r])=>console.log(typeof g.generateApiValidatorsFromDocument + ' ' + typeof g.generateApiValidatorsFromPath + ' ' + typeof r.validateExpressRequest + ' ' + typeof r.validateApiGatewayProxyEvent))",
+      "Promise.all([import('openapi-request-validation/generator'), import('openapi-request-validation/runtime')]).then(async ([g,r])=>{const generated=await g.generateApiValidatorsFromPath('./test/fixtures/order-api.yaml'); console.log(typeof g.generateApiValidatorsFromDocument + ' ' + typeof g.generateApiValidatorsFromPath + ' ' + typeof r.validateExpressRequest + ' ' + typeof r.validateApiGatewayProxyEvent + ' ' + generated.validatorCount)})",
     ])
     const cjsOutput = runNode([
       "-e",
-      "const g=require('openapi-request-validation/generator'); const r=require('openapi-request-validation/runtime'); console.log(typeof g.generateApiValidatorsFromDocument + ' ' + typeof g.generateApiValidatorsFromPath + ' ' + typeof r.validateExpressRequest + ' ' + typeof r.validateApiGatewayProxyEvent)",
+      "const g=require('openapi-request-validation/generator'); const r=require('openapi-request-validation/runtime'); g.generateApiValidatorsFromPath('./test/fixtures/order-api.yaml').then((generated)=>console.log(typeof g.generateApiValidatorsFromDocument + ' ' + typeof g.generateApiValidatorsFromPath + ' ' + typeof r.validateExpressRequest + ' ' + typeof r.validateApiGatewayProxyEvent + ' ' + generated.validatorCount))",
     ])
 
-    expect(esmOutput).toBe("function function function function")
-    expect(cjsOutput).toBe("function function function function")
+    expect(esmOutput).toBe("function function function function 1")
+    expect(cjsOutput).toBe("function function function function 1")
   })
 })

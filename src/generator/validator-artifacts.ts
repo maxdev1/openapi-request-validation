@@ -1,6 +1,7 @@
 import type {OpenAPIV3} from "openapi-types"
 import {HTTP_METHODS} from "../common/http-methods.js"
 import {toPascalIdentifier} from "./pascal-identifier.js"
+import {rewriteOpenApiDiscriminators} from "./rewrite-open-api-discriminators.js"
 
 type ParameterLocation = "query" | "path" | "header"
 
@@ -399,6 +400,7 @@ export function prepareValidatorArtifacts(
   validators: ValidatorExports
 } {
   const specForValidation = structuredClone(spec)
+  rewriteOpenApiDiscriminators(specForValidation)
   const validators = registerRequestSchemasAndCollectValidators(specForValidation)
 
   return {

@@ -141,6 +141,6 @@ describe("OpenAPI composition schemas", () => {
           pushToken: "device-token",
         }),
       }),
-    ).toThrow("must match exactly one schema in oneOf")
+    ).toThrow("must be equal to one of the allowed values")
   })
 })

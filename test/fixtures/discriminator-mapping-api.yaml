@@ -1,0 +1,65 @@
+openapi: 3.0.3
+info:
+  title: Discriminator Mapping API
+  version: 1.0.0
+paths:
+  /items:
+    post:
+      operationId: createItem
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - item
+              properties:
+                item:
+                  $ref: "#/components/schemas/ItemResource"
+      responses:
+        "201":
+          description: Created
+components:
+  schemas:
+    ItemResource:
+      oneOf:
+        - $ref: "#/components/schemas/ItemReference"
+        - $ref: "#/components/schemas/ItemEmbedded"
+      discriminator:
+        propertyName: type
+        mapping:
+          REFERENCE: "#/components/schemas/ItemReference"
+          EMBEDDED: "#/components/schemas/ItemEmbedded"
+    ItemResourceType:
+      type: string
+      enum:
+        - REFERENCE
+        - EMBEDDED
+    ItemResourceBase:
+      type: object
+      required:
+        - type
+      properties:
+        type:
+          $ref: "#/components/schemas/ItemResourceType"
+    ItemReference:
+      allOf:
+        - $ref: "#/components/schemas/ItemResourceBase"
+        - type: object
+          required:
+            - id
+          properties:
+            id:
+              type: string
+    ItemEmbedded:
+      allOf:
+        - $ref: "#/components/schemas/ItemResourceBase"
+        - type: object
+          required:
+            - code
+          properties:
+            code:
+              type: string
+            value:
+              type: number
