@@ -43,15 +43,15 @@ export async function handler(event: unknown) {
 
 ### lambda-api
 
-Wrap route handlers with `withValidation(...)` or call `validateLambdaApiRequest(...)` directly.
+Wrap route handlers with `withLambdaApiValidation(...)` or call `validateLambdaApiRequest(...)` directly.
 
 ```ts
 import {validateCreateCustomerOrderRequest} from "./generated/openapi-validators.js"
-import {withValidation} from "openapi-request-validation"
+import {withLambdaApiValidation} from "openapi-request-validation"
 
 api.post(
   "/customers/:customerId/orders",
-  withValidation(validateCreateCustomerOrderRequest, (req, res) => {
+  withLambdaApiValidation(validateCreateCustomerOrderRequest, (req, res) => {
     res.send({ok: true})
   }),
 )
