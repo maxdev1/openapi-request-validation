@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.1](https://github.com/maxdev1/openapi-request-validation/compare/openapi-request-validation-v0.2.0...openapi-request-validation-v0.2.1) (2026-03-17)
+
+
+### Bug Fixes
+
+* **generator:** fix a bug where generated validator names collided ([e364d2e](https://github.com/maxdev1/openapi-request-validation/commit/e364d2e644710b58e59e5eb96bf51d90190161f9))
+
 ## [0.2.0](https://github.com/maxdev1/openapi-request-validation/compare/openapi-request-validation-v0.1.4...openapi-request-validation-v0.2.0) (2026-03-17)
 
 
