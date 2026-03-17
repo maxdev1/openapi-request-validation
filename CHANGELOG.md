@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/maxdev1/openapi-request-validation/compare/openapi-request-validation-v0.2.1...openapi-request-validation-v0.3.0) (2026-03-17)
+
+
+### Features
+
+* **generator:** add special handling for discriminator cases ([42b428d](https://github.com/maxdev1/openapi-request-validation/commit/42b428d950531f07e4a0336a08482b47c6fa97db))
+
 ## [0.2.1](https://github.com/maxdev1/openapi-request-validation/compare/openapi-request-validation-v0.2.0...openapi-request-validation-v0.2.1) (2026-03-17)
 
 
