@@ -1,0 +1,13 @@
+# Changelog
+
+## [0.2.0](https://github.com/maxdev1/openapi-request-validation/compare/openapi-request-validation-v0.1.4...openapi-request-validation-v0.2.0) (2026-03-17)
+
+
+### Features
+
+* **release:** introduce release-please for release automation ([4c3e030](https://github.com/maxdev1/openapi-request-validation/commit/4c3e030e73161bda7283fa9a58a4dfd5d21bce5c))
+
+
+### Bug Fixes
+
+* **release:** use oidc publish ([f1040ad](https://github.com/maxdev1/openapi-request-validation/commit/f1040ad6026c8c9aa206f63b085c10ec0dbc1280))
