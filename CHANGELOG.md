@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.2](https://github.com/maxdev1/openapi-request-validation/compare/openapi-request-validation-v0.3.1...openapi-request-validation-v0.3.2) (2026-03-17)
+
+
+### Bug Fixes
+
+* **readme:** update readme ([80ac4ab](https://github.com/maxdev1/openapi-request-validation/commit/80ac4ab05c4403f12847aa56c27a6b0c9838a491))
+
 ## [0.3.1](https://github.com/maxdev1/openapi-request-validation/compare/openapi-request-validation-v0.3.0...openapi-request-validation-v0.3.1) (2026-03-17)
 
 
