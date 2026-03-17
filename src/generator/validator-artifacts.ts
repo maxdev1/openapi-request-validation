@@ -37,9 +37,17 @@ type ParameterSchemaGroup = {
  * collisions from overwriting earlier validators in the generated module.
  */
 export function createUniqueName(candidate: string, seen: Map<string, number>): string {
-  const count = seen.get(candidate) ?? 0
+  let count = seen.get(candidate) ?? 0
+  let uniqueName = count === 0 ? candidate : `${candidate}${count + 1}`
+
+  while (seen.has(uniqueName)) {
+    count += 1
+    uniqueName = `${candidate}${count + 1}`
+  }
+
   seen.set(candidate, count + 1)
-  return count === 0 ? candidate : `${candidate}${count + 1}`
+  seen.set(uniqueName, 1)
+  return uniqueName
 }
 
 /**
@@ -344,6 +352,9 @@ function registerRequestSchemasAndCollectValidators(spec: OpenAPIV3.Document): V
   const componentSchemas = ensureComponentsSchemas(spec)
   const validators: ValidatorExports = {}
   const seenOperationNames = new Map<string, number>()
+  const seenSchemaNames = new Map<string, number>(
+    Object.keys(componentSchemas).map((schemaName) => [schemaName, 1]),
+  )
 
   for (const [pathKey, rawPathItem] of Object.entries(spec.paths ?? {})) {
     const pathItem = resolvePathItem(
@@ -367,7 +378,7 @@ function registerRequestSchemasAndCollectValidators(spec: OpenAPIV3.Document): V
         continue
       }
 
-      const schemaName = `${baseName}Request`
+      const schemaName = createUniqueName(`${baseName}Request`, seenSchemaNames)
       componentSchemas[schemaName] = requestSchema
       validators[`validate${baseName}Request`] = `Spec#/components/schemas/${schemaName}`
     }

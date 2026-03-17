@@ -1,0 +1,30 @@
+openapi: 3.0.3
+info:
+  title: Schema Name Collision API
+  version: 1.0.0
+paths:
+  /items:
+    post:
+      operationId: createItem
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateItemRequest"
+      responses:
+        "201":
+          description: Created
+components:
+  schemas:
+    CreateItemRequest:
+      type: object
+      properties:
+        code:
+          type: string
+        value:
+          type: integer
+      required:
+        - code
+        - value
+      additionalProperties: false
