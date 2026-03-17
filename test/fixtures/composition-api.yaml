@@ -1,0 +1,135 @@
+openapi: 3.0.3
+info:
+  title: Composition API
+  version: 1.0.0
+paths:
+  /customers/{customerId}/payment-preferences:
+    post:
+      operationId: savePaymentPreference
+      parameters:
+        - name: customerId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: x-request-id
+          in: header
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - type: object
+                  properties:
+                    cardToken:
+                      type: string
+                  required:
+                    - cardToken
+                - type: object
+                  properties:
+                    invoiceNumber:
+                      type: string
+                  required:
+                    - invoiceNumber
+      responses:
+        "204":
+          description: Saved
+  /customers/{customerId}/contact-preferences:
+    post:
+      operationId: saveContactPreference
+      parameters:
+        - name: customerId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: x-request-id
+          in: header
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              anyOf:
+                - type: object
+                  properties:
+                    email:
+                      type: string
+                      format: email
+                  required:
+                    - email
+                - type: object
+                  properties:
+                    phone:
+                      type: string
+                  required:
+                    - phone
+      responses:
+        "204":
+          description: Saved
+  /customers/{customerId}/notification-preferences:
+    post:
+      operationId: saveNotificationPreference
+      parameters:
+        - name: customerId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: x-request-id
+          in: header
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - $ref: "#/components/schemas/EmailNotificationPreference"
+                - $ref: "#/components/schemas/SmsNotificationPreference"
+              discriminator:
+                propertyName: channel
+                mapping:
+                  email: "#/components/schemas/EmailNotificationPreference"
+                  sms: "#/components/schemas/SmsNotificationPreference"
+      responses:
+        "204":
+          description: Saved
+components:
+  schemas:
+    EmailNotificationPreference:
+      type: object
+      properties:
+        channel:
+          type: string
+          enum:
+            - email
+        email:
+          type: string
+          format: email
+      required:
+        - channel
+        - email
+      additionalProperties: false
+    SmsNotificationPreference:
+      type: object
+      properties:
+        channel:
+          type: string
+          enum:
+            - sms
+        phone:
+          type: string
+      required:
+        - channel
+        - phone
+      additionalProperties: false

@@ -1,0 +1,40 @@
+openapi: 3.0.3
+info:
+  title: Order API
+  version: 1.0.0
+paths:
+  /customers/{customerId}/orders:
+    post:
+      operationId: createCustomerOrder
+      parameters:
+        - name: customerId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: includeMeta
+          in: query
+          schema:
+            type: boolean
+        - name: x-request-id
+          in: header
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amount:
+                  type: integer
+                note:
+                  type: string
+              required:
+                - amount
+              additionalProperties: false
+      responses:
+        "201":
+          description: Created
