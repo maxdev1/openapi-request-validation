@@ -1,6 +1,6 @@
 {
   "name": "openapi-request-validation",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Build-time OpenAPI request validation for serverless and lightweight Node runtimes",
   "type": "module",
   "sideEffects": false,
